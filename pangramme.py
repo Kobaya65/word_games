@@ -26,9 +26,8 @@ def building_sentence_dict(phrase):
     return dict_lettres
 
 
-def pangramme():
-    '''A pangram is a sentence with all the letters of the alphabet.
-    '''
+def pangram():
+    '''A pangram is a sentence with all the letters of the alphabet.'''
     for phrase in phrases:
         dict_lettres = building_sentence_dict(phrase)
 
@@ -48,6 +47,6 @@ def pangramme():
         if len(erreurs):
             print(f'-->  Lettres manquantes : {erreurs[:-2]}')
 
+
 if __name__ == '__main__':
-    pangramme()
-    
+    pangram()
