@@ -1,12 +1,11 @@
 
-def est_palindrome(phrase: str) -> bool:
+def est_palindrome(phrase: str) -> str:
     """Check if phrase is a palindrome.
     - phrase : sentence to test
-    Return True if sentence is a palindrome else False.
+    Return OK/NOK followed by the phrase, or a dedicated message if phrase < 2 characters
     """
     if len(phrase) < 2:
-        print(f'\n{phrase} : entrer au minimum 2 lettres.')
-        return False
+        res = f'\n{phrase} : entrer au minimum 2 lettres.\n'
     else:
         unwanted_letters = 'àâäéèêëìïîòôöóùûÀÄÂÃÈÉÊËÌÍÎÏÇçñùûü'
         replace_by = 'aaaeeeeiiioooouuaaaaeeeeiiiiccnuuu'
@@ -19,9 +18,12 @@ def est_palindrome(phrase: str) -> bool:
         phrase_renverse = ''.join(reversed(phrase_nettoyee))
 
         if phrase_nettoyee == phrase_renverse:
-            return True
+            res = f"OK  {phrase}"
         else:
-            return False
+            res = f"NOK {phrase}"
+
+    return res
+
 
 # liste de palindromes
 palindromes = [
@@ -81,12 +83,11 @@ palindromes = [
 
 # trie des palidromes
 palindromes_tries = sorted(palindromes)
-print(str(palindromes_tries) + "\n")
-# test des palindromes
+print(str(palindromes_tries) + "\n\n")
+# palindromes triés
 for phrase in palindromes_tries:
     print(phrase)
-
+print("\n")
 # test des palindromes
 for phrase in palindromes:
-    res = est_palindrome(phrase)
-    print(f'{res:>5} {phrase}')
+    print(est_palindrome(phrase))
