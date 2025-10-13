@@ -19,20 +19,21 @@ class bcolors:
 def main():
     lettres_manquees = set()
     clean_terminal()
-    mot = input("Entrez le mot à découvrir\n(les caractères accentués seront remplacés\npar leur caractère de base) : ")
+    pres = "* Le jeu du \"Pendu\" *"
+    len_pres = len(pres)
+    pres =  f"{"*" * len_pres}\n{pres}\n{"*" * len_pres}\nLes caractères accentués sont acceptés.\nLe jeu s'arrête à la 6e erreur.\nEntrez le mot à découvrir : "
+    mot = input(pres)
     mot_decouvert = '_' * len(mot)
-    # enlever les accents qui auraient été saisis
-    mot_nettoye = unidecode.unidecode(mot)
     clean_terminal()
     print(f'Mot à découvrir : {mot_decouvert}')
     # nombre d'erreurs maximum
     nb_erreurs = 6
     tour = 0
-    while mot_nettoye != mot_decouvert and nb_erreurs:
-        lettre = input(f'Tour {tour + 1}. Entrez une lettre (pas de caractère accentué) : ').lower()
+    while mot != mot_decouvert and nb_erreurs:
+        lettre = input(f'Tour {tour + 1}. Entrez une lettre : ').lower()
         tour += 1
-        # on regarde si la lettre saisie fait partie de l'alphabet et des voyelles accentuées
-        if not lettre in string.ascii_lowercase:
+        # on regarde si la lettre saisie fait partie de l'alphabet ou des caractères accentués
+        if not lettre in  string.ascii_lowercase + 'àäâéèëêîïöôûüç':
             print(f'{lettre} n\'est pas une lettre.')
         else:
             if lettre in lettres_manquees or lettre in mot_decouvert:
@@ -40,7 +41,7 @@ def main():
                 tour -= 1
             else:
                 trouve = False
-                for idx, l in enumerate(mot_nettoye):
+                for idx, l in enumerate(mot):
                     if l == lettre:
                         trouve = True
                         # recomposer mot_decouvert
@@ -62,12 +63,12 @@ def main():
                     
                 print(f'Mot à découvrir : {mot_decouvert}')
 
-    if mot_nettoye == mot_decouvert:
+    if mot == mot_decouvert:
         print(f'Bravo, vous avez gagné en {tour} coup{'s' if tour > 1 else ''} !')
     else:
         print('Vous avez perdu...')
         print(f'Votre essai : {mot_decouvert}.')
-        print(f'Le mot à découvrir était : {mot_nettoye}.')
+        print(f'Le mot à découvrir était : {mot}.')
 
 
 def clean_terminal():
