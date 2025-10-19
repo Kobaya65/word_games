@@ -1,7 +1,9 @@
+"""The game of hangman"""
+
 import string
-import unidecode
 
 class bcolors:
+    """Color codes."""
     # ANSI escape codes
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -16,7 +18,8 @@ class bcolors:
     CURSOR_UP_15_LINES = '\033[15A'
 
 
-def main():
+def main() -> None:
+    """Main function."""
     lettres_manquees = set()
     clean_terminal()
     pres = "* Le jeu du \"Pendu\" *"
@@ -33,7 +36,7 @@ def main():
         lettre = input(f'Tour {tour + 1}. Entrez une lettre : ').lower()
         tour += 1
         # on regarde si la lettre saisie fait partie de l'alphabet ou des caractères accentués
-        if not lettre in  string.ascii_lowercase + 'àäâéèëêîïöôûüç':
+        if lettre not in  string.ascii_lowercase + 'àäâéèëêîïöôûüç':
             print(f'{lettre} n\'est pas une lettre.')
         else:
             if lettre in lettres_manquees or lettre in mot_decouvert:
@@ -60,7 +63,7 @@ def main():
                         lettres_proposees += f'{l}, '
                     lettres_proposees = lettres_proposees[:-2]
                     print(f'Autres lettres proposées : {lettres_proposees}')
-                    
+
                 print(f'Mot à découvrir : {mot_decouvert}')
 
     if mot == mot_decouvert:
@@ -71,9 +74,8 @@ def main():
         print(f'Le mot à découvrir était : {mot}.')
 
 
-def clean_terminal():
-    """ Vider le terminal
-    """
+def clean_terminal() -> None:
+    """ Vider le terminal."""
     print(bcolors.ERASE_SCREEN)
     print(bcolors.CURSOR_UP_15_LINES)
 

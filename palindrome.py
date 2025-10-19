@@ -1,3 +1,4 @@
+"""Can test if a phrase is a palindrom."""
 
 def est_palindrome(phrase: str) -> str:
     """Check if phrase is a palindrome.
@@ -10,7 +11,7 @@ def est_palindrome(phrase: str) -> str:
         unwanted_letters = 'àâäéèêëìïîòôöóùûÀÄÂÃÈÉÊËÌÍÎÏÇçñùûü'
         replace_by = 'aaaeeeeiiioooouuaaaaeeeeiiiiccnuuu'
         exclude = " !.?,;:'-_+/¤*^¨¤~&#{[|`\\@}]°"
-        # création d'un dictionnaire 
+        # création d'un dictionnaire
         my_dict = str.maketrans(unwanted_letters, replace_by, exclude)
         # modification des caractères non désirés et suppression des caractères à exclure
         phrase_nettoyee = phrase.translate(my_dict).lower()
@@ -81,7 +82,7 @@ palindromes = [
     "aa"
 ]
 
-# trie des palidromes
+# trie des palindromes
 palindromes_tries = sorted(palindromes)
 print(str(palindromes_tries) + "\n\n")
 # palindromes triés

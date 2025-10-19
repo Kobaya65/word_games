@@ -1,3 +1,5 @@
+"""Can test if a phrase is a pangram or not."""
+
 import string
 
 
