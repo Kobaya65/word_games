@@ -1,8 +1,8 @@
-"""From https://exercism.org/tracks/python/exercises/anagram"""
+"""From https://exercism.org"""
 
 
 def find_anagram(target: str, candidate_words: list[str]) -> list[str]:
-    """Main function of that module."""
+    """From https://exercism.org/tracks/python/exercises/anagram"""
     anagram_words = []
 
     for candidate in candidate_words:
