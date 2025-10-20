@@ -2,7 +2,7 @@
 
 from string import ascii_lowercase
 
-class bcolors:
+class AnsiCodes:
     """Color codes."""
     # ANSI escape codes
     HEADER = '\033[95m'
@@ -24,7 +24,7 @@ def hangman() -> None:
     clean_terminal()
     pres = "* Le jeu du \"Pendu\" *"
     len_pres = len(pres)
-    pres =  f"{"*" * len_pres}\n{pres}\n{"*" * len_pres}\nLes caractères accentués sont acceptés.\nLe jeu s'arrête à la 6e erreur.\nEntrez le mot à découvrir : "
+    pres =  f"{"*" * len_pres}\n{pres}\n{"*" * len_pres}\nLes caractères accentués sont acceptés.\nLe jeu s'arrête à la 6e erreur ou à la découverte du mot.\nEntrez le mot à découvrir : "
     mot = input(pres)
     mot_decouvert = '_' * len(mot)
     clean_terminal()
@@ -49,7 +49,7 @@ def hangman() -> None:
         print(f'Le mot à découvrir était : {mot}.')
 
 def check_letter(lettres_manquees: set, mot: str, mot_decouvert: str, lettre: str, nb_erreurs: int, tour: int) -> tuple[str, int, int]:
-    """Check if lettre is in mot.
+    """Check if lettre is within mot.
 
     Args:
         lettres_manquees (set): wrong letters already proposed
@@ -96,8 +96,8 @@ def check_letter(lettres_manquees: set, mot: str, mot_decouvert: str, lettre: st
 
 def clean_terminal() -> None:
     """ Vider le terminal."""
-    print(bcolors.ERASE_SCREEN)
-    print(bcolors.CURSOR_UP_15_LINES)
+    print(AnsiCodes.ERASE_SCREEN)
+    print(AnsiCodes.CURSOR_UP_15_LINES)
 
 
 if __name__ == '__main__':
