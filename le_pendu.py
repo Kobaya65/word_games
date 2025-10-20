@@ -49,7 +49,7 @@ def hangman() -> None:
         print(f'Le mot à découvrir était : {mot}.')
 
 def check_letter(lettres_manquees: set, mot: str, mot_decouvert: str, lettre: str, nb_erreurs: int, tour: int) -> tuple[str, int, int]:
-    """_summary_
+    """Check if lettre is in mot.
 
     Args:
         lettres_manquees (set): wrong letters already proposed
@@ -91,7 +91,7 @@ def check_letter(lettres_manquees: set, mot: str, mot_decouvert: str, lettre: st
 
         print(f'Mot à découvrir : {mot_decouvert}')
 
-    return mot_decouvert, tour, nb_erreurs
+    return (mot_decouvert, tour, nb_erreurs)
 
 
 def clean_terminal() -> None:
